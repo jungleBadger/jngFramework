@@ -1,0 +1,217 @@
+body {
+    font-family: 'Roboto Slab', serif;
+    height: 100%;
+}
+
+* {
+    /*outline: 1px solid red;*/
+    box-sizing: border-box;
+}
+
+img, object, embed, video {
+    max-width: 100%;
+}
+
+.tap-element {
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+}
+
+.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.center-h {
+    justify-content: center;
+}
+
+.center-v {
+    align-items: center;
+}
+
+.row[data-items="1"] > div {
+    min-width: 98%;
+    flex: 1;
+    margin: 1%;
+}
+.row[data-items="2"] > div {
+    min-width: 48.00%;
+    margin: 1%;
+}
+
+.row[data-items="3"] > div {
+    min-width: 30.00%;
+}
+
+.row[data-items="4"] > div {
+    min-width: 22.50%;
+    margin: 1%;
+}
+
+.row[data-items="5"] > div {
+    min-width: 18%;
+    flex: 5;
+    margin: 1%;
+}
+
+.row[data-items="6"] > div {
+    min-width: 14.66%;
+    flex: 6;
+    margin: 1%;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 30.00%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75.00%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100.00%;
+}
+
+h1 {
+    font-size: 2.8vw;
+}
+
+h2 {
+    font-size: 2.2vw;
+}
+
+h3 {
+    font-size: 1.6vw;
+}
+
+h4 {
+    font-size: 1.2vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-rounded {
+    border-radius: 50%;
+}
+
+.padding-1 {
+    padding: 1%;
+}
+
+.marginless {
+    margin: 0;
+}
+
+.card {
+    max-width: 33%;
+    border: 1px solid gainsboro;
+    box-shadow: 0 0 5px 0 gainsboro;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .row[data-items] > div {
+        width: 100%;
+        flex: auto;
+        margin: 5px 0;
+    }
+
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    h4 {
+        font-size: 12px;
+    }
+
+    .card {
+        max-width: initial;
+        border: 1px solid gainsboro;
+        box-shadow: 0 0 5px 0 gainsboro;
+    }
+
+}

@@ -1,0 +1,28 @@
+{
+  "name": "jng_framework",
+  "version": "1.0.0",
+  "description": "a css and js styles collection",
+  "main": "null",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dcerag",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.4",
+    "cssnano": "^3.9.1",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-changed": "^1.3.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-image-resize": "^0.11.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.11",
+    "yargs": "^6.5.0"
+  }
+}
