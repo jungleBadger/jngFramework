@@ -2,9 +2,20 @@
   "name": "jng_framework",
   "version": "1.0.0",
   "description": "a css and js styles collection",
-  "main": "null",
+  "main": "./js/main.script.js",
   "scripts": {
+    "build": "gulp browserify",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "maintainers": [
+    {
+      "email": "danielpaladar@gmail.com",
+      "name": "dcerag"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jungleBadger/jngFramework.git"
   },
   "author": "dcerag",
   "license": "ISC",
@@ -24,5 +35,6 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.11",
     "yargs": "^6.5.0"
-  }
+  },
+  "optionalDependencies": {}
 }
