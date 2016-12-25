@@ -39,6 +39,17 @@ Handle duplicated imports
 Methods of domHandler exposed as domHandler.appendChild(parentEl, childEl)
 Accepts a parent target to insert dependencies just a suggar to window.appendChild() to handle errors
 
+#### Modal Box
+A clean implementation of a Modal Box to be fulfilled with a custom HTML template
+Exposed as modalBox constructor which will accept a configuration object (TODO)
+E.g: var modal1 = jngFramework.modalBox();
+##### openModal
+Method of Modal Box exposed as modal1.openModal({}).
+Accept a custom JSON configuration that will customize the modal box (TODO)
+
+##### closeModal
+Method of Modal Box exposed as modal1.closeModal().
+Closes the modal box cleaning it out the customized HTML and listeners attached on open
 
 ## TODO
 * MORE FEATURES
