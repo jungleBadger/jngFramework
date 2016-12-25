@@ -49,10 +49,9 @@
             .pipe(gulp.dest("dist/js/"));
     });
 
-    gulp.task("watch", function() {
-        gulp.watch("/js/*.js", ["browserify"]);
+    gulp.task('watch', function() {
+        gulp.watch("js/*.js", ['browserify']);
     });
-
 
     gulp.task("minifyJS", function () {
         return gulp.src(["js/*.js"])
