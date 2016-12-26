@@ -6,8 +6,9 @@
 
     //MODAL BOX FEATURE THAT CAN RECEIVE DEPENDENCIES SUCH AS JQUERY
     module.exports = function (dependencies) {
+
         var modalCounter = 0,
-            bodyElement = document.querySelector("body");
+            bodyElement = dependencies.document.querySelector("body");
 
         //MODAL BOX CONSTRUCTOR - CREATING AN UNIQUE MODAL
         return function instantiateNewModal (msg) {
@@ -25,7 +26,6 @@
             self.methods = {
                 "openModal": function (modalConfigs) {
                     return function () {
-
                         if (modalConfigs.template) {
                             self.methods.appendTemplate(modalConfigs.template);
                         }
@@ -46,12 +46,12 @@
                     self.props.modalEl.appendChild(template);
                 },
                 "modalElement": (function buildModalEl() {
-                    self.props.modalEl = document.createElement("aside");
+                    self.props.modalEl = dependencies.document.createElement("aside");
                     self.props.modalEl.classList.add("jng-modal");
                     self.props.modalEl.setAttribute("data-index", modalCounter += 1);
-                    self.props.closeEl = document.createElement("button");
-                    self.props.closeEl.appendChild(document.createTextNode("Close"));
-                    self.props.closeEl.classList.add("modal-close")
+                    self.props.closeEl = dependencies.document.createElement("button");
+                    self.props.closeEl.appendChild(dependencies.document.createTextNode("Close"));
+                    self.props.closeEl.classList.add("modal-close");
                     self.props.closeEl.addEventListener("click", function () {
                         self.methods.closeModal();
                     });

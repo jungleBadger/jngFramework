@@ -179,7 +179,9 @@ h6 {
 
 .card {
     max-width: 33%;
+    border: 1px solid gainsboro;
     box-shadow: 0 0 5px 0 gainsboro;
+    justify-content: space-between;
 }
 
 .jng-modal {

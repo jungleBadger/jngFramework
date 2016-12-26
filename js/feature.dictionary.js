@@ -11,8 +11,12 @@
     module.exports = function (appDependencies) {
         //LOAD FEATURES PASSING ANY DEPENDENCIES
         return {
-            "modalBox": modalBox(domHandler.appendChild),
-            "domHandler": domHandler
+            "modalBox": modalBox({
+                "document": appDependencies.document
+            }),
+            "domHandler": domHandler({
+                "document": appDependencies.document
+            })
         };
     };
 

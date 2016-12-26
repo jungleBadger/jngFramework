@@ -4,40 +4,41 @@
 (function () {
     "use strict";
 
-    module.exports = {
-        "cssInjector": function (cssFiles) {
-            var headAnchor = document.querySelector("head");
+    module.exports = function (handlerDependencies) {
+        return {
+            "cssInjector": function (cssFiles) {
+                var headAnchor = handlerDependencies.document.querySelector("head");
 
-            if (cssFiles && Array.isArray(cssFiles)) {
-                cssFiles.forEach(function (filePath) {
-                    var linksEls = document.querySelectorAll("link"),
-                        link = document.createElement("link");
-                    link.href = filePath;
-                    link.rel = "stylesheet";
+                if (cssFiles && Array.isArray(cssFiles)) {
+                    cssFiles.forEach(function (filePath) {
+                        var linksEls = handlerDependencies.document.querySelectorAll("link"),
+                            link = handlerDependencies.document.createElement("link");
+                        link.href = filePath;
+                        link.rel = "stylesheet";
 
-                    for (var i = 0; i < linksEls.length; i += 1) {
-                        if (linksEls[i].href === link.href) {
-                            return false;
+                        for (var i = 0; i < linksEls.length; i += 1) {
+                            if (linksEls[i].href.indexOf(link.href) > -1) {
+                                return false;
+                            }
                         }
-                    }
-                    headAnchor.appendChild(link);
-                });
-            } else {
-                //IMPROVE
-                console.warn("value is not CSS Array");
-                return false;
-            }
-            return false;
-        },
-        "appendChild": function (parentEl, childEl) {
-            try {
-                parentEl.appendChild(childEl);
-            } catch (e) {
-                console.log(e);
-            }
+                        headAnchor.appendChild(link);
+                    });
+                } else {
+                    //IMPROVE
+                    throw new Error("Value is not CSS Array");
+                }
+                return true;
+            },
+            "appendChild": function (parentEl, childEl) {
+                try {
+                    parentEl.appendChild(childEl);
+                } catch (e) {
+                    console.log(e);
+                }
 
-            return this;
-        }
+                return this;
+            }
+        };
     };
 
 }());
