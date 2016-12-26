@@ -12,7 +12,11 @@ Simple display flex shortcut
 Create a row that represent 100% of the container
 
 #### .row element with data-items attribute
-Tells the row element how many items can be flexible accomodated e.g <div class="row" "data-items="3"> create a row which try to persists three items in that row
+Tells the row element how many items can be flexible accommodate without breaking in another line
+```html
+<div class="row" "data-items="3">
+```
+
 
 #### .col class
 Create a display flex column element
@@ -57,18 +61,28 @@ Accepts a parent target to insert dependencies just a suggar to window.appendChi
 A clean implementation of a Modal Box to be fulfilled with a custom HTML template
 
 Exposed as modalBox constructor which will accept a configuration object (TODO)
-
-E.g: var modal1 = jngFramework.modalBox();
+```js
+var modal1 = jngFramework.modalBox();
+```
 
 ##### openModal
 Method of Modal Box exposed as modal1.openModal({}).
 
 Accept a custom JSON configuration that will customize the modal box (TODO)
-
+```js
+element.addEventListener("click", function () {
+    modal1.openModal({});
+});
+```
 ##### closeModal
 Method of Modal Box exposed as modal1.closeModal().
 
 Closes the modal box cleaning it out the customized HTML and listeners attached on open
+```js
+closeBtn.addEventListener("click", function () {
+    modal1.closeModal();
+});
+```
 
 ## TODO
 * MORE FEATURES
