@@ -1,6 +1,6 @@
 {
   "name": "jng_framework",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a css and js styles collection",
   "main": "./js/main.script.js",
   "scripts": {
