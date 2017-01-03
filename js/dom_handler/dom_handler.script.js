@@ -7,7 +7,8 @@
     module.exports = function (handlerDependencies) {
         return {
             "cssInjector": function (cssFiles) {
-                var headAnchor = handlerDependencies.document.querySelector("head");
+                var headAnchor = handlerDependencies.document.querySelector("head"),
+                    self = this;
 
                 if (cssFiles && Array.isArray(cssFiles)) {
                     cssFiles.forEach(function (filePath) {
@@ -21,7 +22,7 @@
                                 return false;
                             }
                         }
-                        headAnchor.appendChild(link);
+                        self.appendChild(headAnchor, link);
                     });
                 } else {
                     //IMPROVE

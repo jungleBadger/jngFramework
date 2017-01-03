@@ -25,12 +25,14 @@
 
             self.methods = {
                 "openModal": function (modalConfigs) {
+                    modalConfigs = modalConfigs || {};
+                    console.log(modalConfigs);
+                    console.log("aqi");
                     return function () {
                         if (modalConfigs.template) {
                             self.methods.appendTemplate(modalConfigs.template);
                         }
 
-                        console.log(this);
                         self.props.modalEl.classList.toggle("modal-open");
                         bodyElement.classList.toggle("scrolless");
                         return this;
@@ -39,7 +41,7 @@
                 "closeModal": function () {
                     self.props.modalEl.classList.remove("modal-open");
                     bodyElement.classList.remove("scrolless");
-                    console.log("close");
+                    console.log("x");
                     return this;
                 },
                 "appendTemplate": function (template) {
@@ -48,7 +50,7 @@
                 "modalElement": (function buildModalEl() {
                     self.props.modalEl = dependencies.document.createElement("aside");
                     self.props.modalEl.classList.add("jng-modal");
-                    self.props.modalEl.setAttribute("data-index", modalCounter += 1);
+                    self.props.modalEl.setAttribute("data-index", modalCounter);
                     self.props.closeEl = dependencies.document.createElement("button");
                     self.props.closeEl.appendChild(dependencies.document.createTextNode("Close"));
                     self.props.closeEl.classList.add("modal-close");
@@ -57,6 +59,7 @@
                     });
                     self.props.modalEl.appendChild(self.props.closeEl);
                     bodyElement.appendChild(self.props.modalEl);
+                    modalCounter += 1;
                     return self.props.modalEl;
                 }())
             };

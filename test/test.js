@@ -67,7 +67,64 @@
                 expect(frameworkInstance.domHandler.cssInjector).to.throw(Error);
             });
 
+            it("should append a link element to head tag for each index in argument array", function () {
+                frameworkInstance.domHandler.cssInjector(["./jng_framework/css/test.style.css"]);
+                var counter = 0,
+                    linkTags = window.document.querySelectorAll("link");
+                for (var i = 0; i < linkTags.length; i += 1) {
+                    if (linkTags[i].href.indexOf("/test.style.css") > -1) {
+                        counter += 1;
+                    }
+                }
+                expect(counter).to.be.greaterThan(0);
+            });
         });
+    });
+
+    describe("Modal Box Feature", function () {
+        var frameworkInstance = framework(window),
+            modalBoxInstance = frameworkInstance.modalBox(),
+            modalDOMEl = window.document.querySelector("aside.jng-modal");
+        it("should be contained on Framework object methods", function () {
+            expect(frameworkInstance).to.haveOwnProperty("modalBox");
+        });
+
+        it("should be a constructor function", function () {
+            expect(frameworkInstance.modalBox).to.a("function");
+        });
+
+        describe("Default Modal Box construction rules", function () {
+            it("should construct a modal box object", function () {
+                expect(modalBoxInstance).to.an("object");
+            });
+
+            it("should build an aside element into the DOM after being constructed", function () {
+                expect(modalDOMEl).to.not.equal(null);
+            });
+
+            it("should have default modal box class associated with aside element", function () {
+                expect(modalDOMEl.classList.contains("jng-modal")).to.be.equals(true);
+            });
+
+            it("should have a data index attribute on each modal box", function () {
+                expect(modalDOMEl.attributes["data-index"]).to.not.equal(undefined);
+            });
+
+            it("should have an unique data index attribute for each modal box - 0 index based", function () {
+                expect(modalDOMEl.attributes["data-index"].value).to.be.equals("0");
+            });
+        });
+
+        describe("Opening Modal method", function () {
+            it("should contain opening function inside modal instance", function () {
+                expect(modalBoxInstance.openModal).to.be.a("function");
+            });
+
+            it("should load default properties in case omitted", function () {
+
+            });
+        });
+
 
     });
 

@@ -40,6 +40,27 @@ Does not allow the image element overflow the container
 Simple card element
 
 ### JS
+
+#### Dependencies
+* Window object injected or present on global
+* JSDom (or equivalent) to simualate window object on Node env
+
+#### Instantiating Framework
+```js
+npm install jng_framework --save
+```
+* from browser
+```js
+var jngFramework = require("jng_framework")();
+```
+* from node
+```js
+ var jsdom = require("jsdom").jsdom,
+        options = {},
+        window = jsdom("<html><head></head><body></body></html>", options).defaultView;
+var jngFramework = require("jng_framework")(window);
+```
+
 #### DOM Handler
 Set of methods that can handle gracefully DOM manipulations
 
