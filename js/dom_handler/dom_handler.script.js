@@ -34,7 +34,7 @@
                 try {
                     parentEl.appendChild(childEl);
                 } catch (e) {
-                    console.log(e);
+                    throw e;
                 }
 
                 return this;

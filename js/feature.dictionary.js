@@ -12,7 +12,8 @@
         //LOAD FEATURES PASSING ANY DEPENDENCIES
         return {
             "modalBox": modalBox({
-                "document": appDependencies.document
+                "document": appDependencies.document,
+                "domHandler": domHandler(appDependencies)
             }),
             "domHandler": domHandler({
                 "document": appDependencies.document

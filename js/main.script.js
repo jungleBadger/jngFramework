@@ -24,7 +24,7 @@
                 "document": window.document
             });
 
-            instance.domHandler.cssInjector(["./jng_framework/css/jng.style.css", "./jng_framework/css/modal.style.css"]);
+            instance.domHandler.cssInjector(["./jng_framework/css/jng.style.css"]);
             return instance;
         }
     };

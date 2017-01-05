@@ -10,9 +10,8 @@
         should = chai.should,
         jsdom = require("jsdom").jsdom,
         options = {},
-        window = jsdom("<html><head></head><body></body></html>", options).defaultView,
+        window = jsdom("<html><head></head><body><div id='modalReference'></div></body></html>", options).defaultView,
         framework = require("../js/main.script");
-
 
     describe("Framework constructor", function () {
         it("should throw an error if window object is not present", function () {
@@ -116,12 +115,94 @@
         });
 
         describe("Opening Modal method", function () {
-            it("should contain opening function inside modal instance", function () {
+            it("should contain the opening function inside modal instance", function () {
                 expect(modalBoxInstance.openModal).to.be.a("function");
             });
 
-            it("should load default properties in case omitted", function () {
+            it("should throw an error if no template or references was passed to open function", function () {
+                expect(modalBoxInstance.openModal).to.throw(Error);
+            });
 
+            describe("opening with HTML template", function () {
+                it("should thrown an error if the template passed is not an HTML element", function () {
+                    expect(modalBoxInstance.openModal({
+                        "template": "any string"
+                    })).to.throw(Error);
+                });
+
+                it("should append the passed template into Modal Box", function () {
+                    var testElement = window.document.createElement("div");
+                    testElement.setAttribute("id", "testAppend");
+
+                    expect(modalBoxInstance.openModal({
+                        "template": testElement
+                    })).to.not.throw(Error);
+
+                    expect(window.document.querySelector("aside.jng-modal > .content-wrapper > #testAppend")).to.not.equal(null);
+                    modalBoxInstance.closeModal();
+                });
+            });
+
+            describe("opening with HTML ID reference", function () {
+                it("should thrown an error if the reference passed is invalid", function () {
+                    expect(modalBoxInstance.openModal({
+                        "reference": "invalid_reference"
+                    })).to.throw(Error);
+                });
+
+                it("should query and append the element referenced by ID", function () {
+                    expect(modalBoxInstance.openModal({
+                        "reference": "modalReference"
+                    })).to.not.throw(Error);
+
+                    expect(window.document.querySelector("aside.jng-modal > .content-wrapper > #modalReference")).to.not.equal(null);
+                    modalBoxInstance.closeModal();
+                });
+            });
+
+            describe("Modal Box CSS Classes addition", function () {
+                it("should add the modal-open class to the modal box", function () {
+                    expect(modalBoxInstance.openModal({
+                        "reference": "modalReference"
+                    })).to.not.throw(Error);
+
+                    expect(window.document.querySelector("aside.jng-modal.modal-open")).to.not.equal(null);
+                    modalBoxInstance.closeModal();
+                });
+
+                it("should add the scrolless class to the body element", function () {
+                    expect(modalBoxInstance.openModal({
+                        "reference": "modalReference"
+                    })).to.not.throw(Error);
+
+                    expect(window.document.querySelector("body.scrolless")).to.not.equal(null);
+                    modalBoxInstance.closeModal();
+                });
+            });
+
+        });
+
+        describe("Closing Modal method", function () {
+            it("should contain the closing function inside modal instance", function () {
+                expect(modalBoxInstance.closeModal).to.be.a("function");
+            });
+
+            it("should remove the modal-open class from the modal box element", function () {
+                expect(modalBoxInstance.openModal({
+                    "reference": "modalReference"
+                })).to.not.throw(Error);
+
+                modalBoxInstance.closeModal();
+                expect(window.document.querySelector("aside.jng-modal.modal-open")).to.be.equals(null);
+            });
+
+            it("should remove the scrolless class from the body element", function () {
+                expect(modalBoxInstance.openModal({
+                    "reference": "modalReference"
+                })).to.not.throw(Error);
+
+                modalBoxInstance.closeModal();
+                expect(window.document.querySelector("body.scrolless")).to.be.equals(null);
             });
         });
 
