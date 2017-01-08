@@ -89,7 +89,7 @@ var modal1 = jngFramework.modalBox();
 ##### openModal
 Method of Modal Box exposed as modal1.openModal({}).
 
-Accept a custom JSON configuration that will customize the modal box (TODO)
+Accept a custom JSON configuration that will customize the modal box (TODO CUSTOMISATIONS)
 ```js
 element.addEventListener("click", function () {
     modal1.openModal({});
@@ -104,6 +104,38 @@ closeBtn.addEventListener("click", function () {
     modal1.closeModal();
 });
 ```
+
+#### Social Box
+A simple and responsive box that can be attached to a container element with your social media information
+
+Exposed as socialBox constructor which provide the socialBox object to be further configured
+```js
+var socialBox = jngFramework.socialBox();
+```
+
+##### renderSocialBox
+Method of socialBox that will accept three parameters:
+* an array of JS object in the format declared below
+* a DOM node that will be the parent container
+* the side which the socialBox should be appended - accepted "left" or "right"
+
+```js
+var socialMedias = [{
+    "type": "facebook",
+    "profileLink": "https://www.facebook.com/daniel.abrao.35"
+}, {
+    "type": "github",
+    "profileLink": "https://github.com/jungleBadger"
+}, {
+    "type": "linkedin",
+    "profileLink": "https://br.linkedin.com/in/daniel-ceragioli-abrão-92935675"
+}];
+
+var socialBoxParent = document.getElementById("parentContainer");
+
+socialBox.renderSocialBox(socialMedias, socialBoxParent, "right");
+```
+
 
 ## TODO
 * MORE FEATURES

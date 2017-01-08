@@ -51,14 +51,14 @@
     describe("DOM Handler methods", function () {
         var frameworkInstance = framework(window);
         describe("DOM method constructor", function () {
-            it("should be contained on framework object", function () {
+            it("should be contained within framework object", function () {
                 expect(frameworkInstance).to.haveOwnProperty("domHandler");
             });
         });
 
         describe("CSS Injector methods", function () {
             var frameworkInstance = framework(window);
-            it("should be contained on DOM Handler methods", function () {
+            it("should be contained within DOM Handler methods", function () {
                 expect(frameworkInstance.domHandler).to.haveOwnProperty("cssInjector");
             });
 
@@ -84,7 +84,7 @@
         var frameworkInstance = framework(window),
             modalBoxInstance = frameworkInstance.modalBox(),
             modalDOMEl = window.document.querySelector("aside.jng-modal");
-        it("should be contained on Framework object methods", function () {
+        it("should be contained within Framework object methods", function () {
             expect(frameworkInstance).to.haveOwnProperty("modalBox");
         });
 
@@ -203,6 +203,27 @@
 
                 modalBoxInstance.closeModal();
                 expect(window.document.querySelector("body.scrolless")).to.be.equals(null);
+            });
+        });
+
+
+    });
+
+    describe("Social Box Feature", function () {
+        var frameworkInstance = framework(window),
+            socialBoxInstance = frameworkInstance.socialBox();
+
+        it("should be contained within Framework object methods", function () {
+            expect(frameworkInstance).to.haveOwnProperty("socialBox");
+        });
+
+        describe("Render SocialBox method", function () {
+            it("should contain the rendering function inside social box instance", function () {
+                expect(socialBoxInstance.renderSocialBox).to.be.a("function");
+            });
+
+            it("should throw an error if the socialObj [JSON array] param is different from an array of JSONs", function () {
+                expect(socialBoxInstance.renderSocialBox).to.throw(Error);
             });
         });
 

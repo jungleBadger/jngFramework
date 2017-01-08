@@ -1,0 +1,87 @@
+.social-box-wrapper {
+    display: flex;
+    position: absolute;
+    align-self: flex-start;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.social-box-wrapper.right {
+    right: 0;
+}
+.social-box-wrapper.left {
+    left: 0;
+}
+
+.social-box-wrapper > a {
+    padding: 3px 0;
+}
+
+.social-box-wrapper > a:first-child {
+    padding-top: 0;
+}
+
+.social-box-wrapper > a:last-child {
+    padding-bottom: 0;
+}
+
+.social-box-wrapper > a > div {
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    transition: transform .1s ease-in;
+}
+
+.social-box-wrapper > a > div:hover {
+    transform: translateX(-5px);
+    transition: transform .1s ease-out;
+}
+
+.fb-box {
+    background: url("../assets/social_icons/fb.svg");
+}
+
+.git-box {
+    background: url("../assets/social_icons/github.svg");
+}
+
+.lkdin-box {
+    background: url("../assets/social_icons/linkedin.svg");
+}
+
+@media screen and (max-width: 768px){
+    .social-box-wrapper {
+        position: static;
+        order: -1;
+        align-self: center;
+        flex-direction: row;
+        width: 80%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: center;
+        padding: 5px 0;
+        margin: 20px 0;
+    }
+
+
+    .social-box-wrapper > a {
+        padding: 0;
+    }
+
+
+    .social-box-wrapper > a > div {
+        width: 48px;
+        height: 48px;
+    }
+
+    .social-box-wrapper > a > div:hover {
+        transform: translateX(0px) scale(1.05);
+        transition: transform .1s ease-out;
+    }
+
+}

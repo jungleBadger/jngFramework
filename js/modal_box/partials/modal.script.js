@@ -7,15 +7,14 @@
     //MODAL BOX FEATURE THAT CAN RECEIVE DEPENDENCIES SUCH AS JQUERY
     module.exports = function (dependencies) {
 
-        var modalCounter = 0,
-            bodyElement = dependencies.document.querySelector("body");
+        var document = document || dependencies.document,
+            modalCounter = 0,
+            bodyElement = document.querySelector("body");
 
         dependencies.domHandler.cssInjector(["./jng_framework/css/modal.style.css"]);
 
-
         //MODAL BOX CONSTRUCTOR - CREATING AN UNIQUE MODAL
-        return function instantiateNewModal (msg) {
-
+        return function instantiateNewModal () {
             var self = {
                 "props": {},
                 "methods": {}
@@ -43,7 +42,7 @@
                             if (modalConfigs.template) {
                                 dependencies.domHandler.appendChild(self.props.contentWrapper, modalConfigs.template);
                             } else if (modalConfigs.reference) {
-                                dependencies.domHandler.appendChild(self.props.contentWrapper, dependencies.document.getElementById(modalConfigs.reference));
+                                dependencies.domHandler.appendChild(self.props.contentWrapper, document.getElementById(modalConfigs.reference));
                             }
                             self.props.modalEl.classList.add("modal-open");
                             bodyElement.classList.add("scrolless");
@@ -71,9 +70,9 @@
 
                 },
                 "modalElement": (function buildModalEl() {
-                    self.props.modalEl = dependencies.document.createElement("aside");
-                    self.props.contentWrapper = dependencies.document.createElement("div");
-                    self.props.closeEl = dependencies.document.createElement("button");
+                    self.props.modalEl = document.createElement("aside");
+                    self.props.contentWrapper = document.createElement("div");
+                    self.props.closeEl = document.createElement("button");
 
                     self.props.contentWrapper.classList.add("content-wrapper");
                     self.props.modalEl.classList.add("jng-modal");
@@ -88,7 +87,7 @@
                         });
                     });
 
-                    self.props.closeEl.appendChild(dependencies.document.createTextNode("Close"));
+                    self.props.closeEl.appendChild(document.createTextNode("Close"));
                     self.props.modalEl.appendChild(self.props.closeEl);
                     self.props.modalEl.appendChild(self.props.contentWrapper);
                     bodyElement.appendChild(self.props.modalEl);
@@ -98,7 +97,6 @@
                     return self.props.modalEl;
                 }())
             };
-
 
             return self.methods;
         };
