@@ -11,7 +11,7 @@
             modalCounter = 0,
             bodyElement = document.querySelector("body");
 
-        dependencies.domHandler.cssInjector(["./jng_framework/css/modal.style.css"]);
+        dependencies.domHandler.cssInjector(["./jng_framework/dist/css/modal.style.min.css"]);
 
         //MODAL BOX CONSTRUCTOR - CREATING AN UNIQUE MODAL
         return function instantiateNewModal () {
@@ -67,7 +67,6 @@
                 },
                 "cleanModal": function (element) {
                     element.removeChild(element.firstChild);
-
                 },
                 "modalElement": (function buildModalEl() {
                     self.props.modalEl = document.createElement("aside");

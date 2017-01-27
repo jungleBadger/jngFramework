@@ -6,8 +6,7 @@
 
     module.exports = function (dependencies) {
 
-        dependencies.domHandler.cssInjector(["./jng_framework/css/socialbox.style.css"]);
-
+        dependencies.domHandler.cssInjector(["./jng_framework/dist/css/socialbox.style.min.css"]);
 
         var document = document || dependencies.document,
             self = {

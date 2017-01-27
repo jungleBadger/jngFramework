@@ -16,13 +16,15 @@
     transform: translateY(1000px);
     overflow: hidden;
     z-index: 5;
+    box-shadow: 0px 30px 80px 0px rgba(0, 0, 0, .3);
+    border-radius: 4px;
 }
 
 .jng-modal .modal-close {
     right: 0;
     position: absolute;
     top: 0;
-    margin: 10px;
+    margin: 5px;
     border: 0;
     border-radius: 50%;
     width: 48px;
@@ -48,5 +50,7 @@
         max-width: 100%;
         max-height: initial;
         margin: 0;
+        box-shadow: initial;
+        border-radius: 0;
     }
 }
